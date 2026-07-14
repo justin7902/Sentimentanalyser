@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sentiment Analyser</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#F5F1E8;
+    overflow:hidden;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    position:relative;
+}
+
+.card{
+
+    width:700px;
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(10px);
+
+    border-radius:20px;
+
+    padding:50px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+    animation:fadeIn 1.2s ease;
+
+}
+
+h1{
+
+    color:#2F5D50;
+
+    font-size:52px;
+
+    margin-bottom:15px;
+
+}
+
+.subtitle{
+
+    color:#4A5D56;
+
+    font-size:20px;
+
+    margin-bottom:25px;
+
+}
+
+.description{
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+.btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
+    background:#2F5D50;
+
+    color:white;
+
+    padding:15px 45px;
+
+    margin:10px;
+
+    border-radius:50px;
+
+    transition:.4s;
+
+    font-weight:600;
+
+}
+
+.btn:hover{
+
+    background:#3E7867;
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+
+}
+
+/* Floating Circles */
+
+.circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(47,93,80,.15);
+
+    animation:float 8s infinite ease-in-out;
+
+}
+
+.c1{
+    width:180px;
+    height:180px;
+    top:10%;
+    left:8%;
+}
+
+.c2{
+    width:120px;
+    height:120px;
+    bottom:10%;
+    right:10%;
+    animation-delay:2s;
+}
+
+.c3{
+    width:80px;
+    height:80px;
+    top:25%;
+    right:20%;
+    animation-delay:4s;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-25px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Sentiment Analyser</h1>
+
+<p class="subtitle">
+Understand the emotion behind every sentence.
+</p>
+
+<p class="description">
+
+Analyze user-entered text using Natural Language Processing.
+The application identifies whether a sentence is Positive,
+Negative, or Neutral while displaying polarity and
+subjectivity scores. Registered users can securely save and
+review their previous analyses anytime.
+
+</p>
+
+<a href="{% url 'login' %}" class="btn">
+Login
+</a>
+
+<a href="{% url 'register' %}" class="btn">
+Register
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

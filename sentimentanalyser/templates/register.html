@@ -1,0 +1,331 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register | Sentiment Analyser</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#F5F1E8;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+.circle{
+position:absolute;
+border-radius:50%;
+background:rgba(47,93,80,.12);
+animation:float 8s ease-in-out infinite;
+}
+
+.circle1{
+width:180px;
+height:180px;
+top:50px;
+left:60px;
+}
+
+.circle2{
+width:120px;
+height:120px;
+bottom:60px;
+right:70px;
+animation-delay:2s;
+}
+
+.card{
+
+width:470px;
+
+background:rgba(255,255,255,.78);
+
+backdrop-filter:blur(10px);
+
+padding:45px;
+
+border-radius:20px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+animation:fade .8s ease;
+
+z-index:2;
+
+}
+
+h1{
+
+text-align:center;
+
+color:#2F5D50;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+margin-bottom:30px;
+
+color:#666;
+
+}
+
+.input-group{
+
+margin-bottom:18px;
+
+}
+
+label{
+
+display:block;
+
+margin-bottom:7px;
+
+color:#2F5D50;
+
+font-weight:500;
+
+}
+
+input{
+
+width:100%;
+
+padding:13px;
+
+border-radius:10px;
+
+border:1px solid #ccc;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+input:focus{
+
+border-color:#2F5D50;
+
+box-shadow:0 0 10px rgba(47,93,80,.25);
+
+}
+
+button{
+
+width:100%;
+
+padding:14px;
+
+margin-top:12px;
+
+background:#2F5D50;
+
+color:white;
+
+border:none;
+
+border-radius:30px;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#3E7867;
+
+transform:translateY(-3px);
+
+}
+
+.login{
+
+margin-top:22px;
+
+text-align:center;
+
+font-size:15px;
+
+}
+
+.login a{
+
+color:#2F5D50;
+
+font-weight:600;
+
+text-decoration:none;
+
+}
+
+.login a:hover{
+
+text-decoration:underline;
+
+}
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-25px);}
+100%{transform:translateY(0);}
+
+}
+
+.messages-container {
+    margin-bottom: 20px;
+}
+
+.message-alert {
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.message-alert.error {
+    background-color: #fde8e8;
+    color: #9b1c1c;
+    border: 1px solid #f8b4b4;
+}
+
+.message-alert.success {
+    background-color: #def7ec;
+    color: #03543f;
+    border: 1px solid #84e1bc;
+}
+
+.message-alert.warning {
+    background-color: #fef08a;
+    color: #713f12;
+    border: 1px solid #fef08a;
+}
+
+.message-alert.info {
+    background-color: #e1effe;
+    color: #1e429f;
+    border: 1px solid #a4cafe;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
+
+<div class="card">
+
+<h1>Create Account</h1>
+
+<p class="subtitle">
+Join Sentiment Analyser today
+</p>
+
+{% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+            <div class="message-alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="input-group">
+<label>Full Name</label>
+<input type="text" name="fullname" required>
+</div>
+
+<div class="input-group">
+<label>Username</label>
+<input type="text" name="username" required>
+</div>
+
+<div class="input-group">
+<label>Email Address</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<input type="password" name="password1" required>
+</div>
+
+<div class="input-group">
+<label>Confirm Password</label>
+<input type="password" name="password2" required>
+</div>
+
+<button type="submit">
+Register
+</button>
+
+</form>
+
+<div class="login">
+
+Already have an account?
+
+<a href="{% url 'login' %}">
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
