@@ -161,5 +161,4 @@ Open:
 
 ## Author
 
-Developed as an academic Django project demonstrating sentiment analysis
-using Natural Language Processing (NLP) with TextBlob.
+Developed as a Django project demonstrating sentiment analysis using Natural Language Processing (NLP) with TextBlob.
