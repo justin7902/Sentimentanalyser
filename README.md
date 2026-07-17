@@ -1,85 +1,165 @@
-# Matrix Operations Tool
+# Sentiment Analyser
 
 ## Overview
-The **Matrix Operations Tool** is a Python application developed using the **NumPy** library to perform fundamental matrix calculations through an interactive, menu-driven interface. It enables users to input matrices of different sizes and execute common mathematical operations efficiently while displaying results in a clear and structured format.
 
-## Description
-This project demonstrates how NumPy simplifies matrix manipulation in Python. Users can enter one or two matrices depending on the selected operation, and the program validates matrix dimensions before performing calculations. The application is designed to be simple, interactive, and suitable for learning the basics of matrix operations and numerical computing.
+**Sentiment Analyser** is a web application developed using **Python**,
+**Django**, and **TextBlob** that performs sentiment analysis on
+user-entered text. The application identifies whether the input
+expresses a **Positive**, **Negative**, or **Neutral** sentiment and
+displays the corresponding **polarity** and **subjectivity** scores.
+
+The project also includes user authentication and stores each user's
+previous sentiment analyses, allowing users to review their analysis
+history after logging in.
+
+------------------------------------------------------------------------
 
 ## Features
-- Matrix Addition
-- Matrix Subtraction
-- Matrix Multiplication
-- Matrix Transpose
-- Determinant Calculation for square matrices
-- Interactive menu-driven interface
-- Input validation for matrix dimensions
-- Structured display of matrices and results
-- Error handling for incompatible operations
 
-## Technologies Used
-- Python 3
-- NumPy
+-   User registration and login
+-   Secure authentication using Django's `AbstractUser`
+-   Text sentiment analysis using the TextBlob library
+-   Automatic sentiment classification:
+    -   Positive
+    -   Negative
+    -   Neutral
+-   Displays:
+    -   Sentiment
+    -   Polarity
+    -   Subjectivity
+-   Stores previous analyses in the database
+-   View previous analyses from the dashboard
+-   Responsive and modern user interface
+-   Built with Django and SQLite
+
+------------------------------------------------------------------------
+
+## Technology Stack
+
+-   Python
+-   Django
+-   TextBlob
+-   HTML5
+-   CSS3
+-   Bootstrap 5
+-   SQLite
+
+------------------------------------------------------------------------
 
 ## Project Structure
-```
-MatrixOperationsTool/
-│── matrix_operations.py
+
+``` text
+SentimentAnalyser/
+│
+├── analyzer/
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   ├── templates/
+│   └── static/
+│
+├── sentiment_project/
+├── db.sqlite3
+├── manage.py
 └── README.md
 ```
 
+------------------------------------------------------------------------
+
+## Modules
+
+### Home
+
+Provides an introduction to the application and navigation to the login
+and registration pages.
+
+### User Authentication
+
+Allows users to create an account, log in securely, and log out.
+
+### Sentiment Analysis
+
+Accepts user input, analyzes the text using TextBlob, and calculates: -
+Sentiment - Polarity - Subjectivity
+
+### Analysis History
+
+Stores every analysis in the database and displays previous analyses for
+the logged-in user.
+
+------------------------------------------------------------------------
+
+## Database
+
+### User
+
+Uses Django's custom `AbstractUser` model for authentication.
+
+### Analysis
+
+Each record stores: - User - Input text - Sentiment - Polarity -
+Subjectivity - Date and time of analysis
+
+------------------------------------------------------------------------
+
+## How It Works
+
+1.  Register a new account or log in.
+2.  Enter text in the dashboard.
+3.  Click **Analyze**.
+4.  TextBlob processes the input text.
+5.  The application displays the sentiment, polarity, and subjectivity
+    scores.
+6.  The analysis is stored in the database.
+7.  Users can review previous analyses from the dashboard.
+
+------------------------------------------------------------------------
+
+## Sentiment Classification
+
+-   **Positive** -- Polarity \> 0
+-   **Negative** -- Polarity \< 0
+-   **Neutral** -- Polarity = 0
+
+------------------------------------------------------------------------
+
 ## Installation
 
-1. Install Python 3.
-2. Install NumPy:
+``` bash
+git clone <repository-url>
+cd SentimentAnalyser
 
-```bash
-pip install numpy
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+pip install django textblob
+
+python -m textblob.download_corpora
+
+python manage.py migrate
+
+python manage.py runserver
 ```
 
-## Usage
+Open:
 
-Run the program from the terminal:
+    http://127.0.0.1:8000/
 
-```bash
-python matrix_operations.py
-```
+------------------------------------------------------------------------
 
-Choose an operation from the menu, enter the required matrix dimensions and elements, and the program will display the computed result.
+## Future Enhancements
 
-## Supported Operations
+-   Export analysis reports
+-   Advanced NLP models
+-   Search and filter analysis history
+-   Charts and analytics
+-   Multi-language sentiment analysis
 
-| Operation | Description |
-|----------|-------------|
-| Addition | Adds two matrices of the same dimensions. |
-| Subtraction | Subtracts one matrix from another of the same dimensions. |
-| Multiplication | Multiplies two compatible matrices. |
-| Transpose | Converts rows into columns. |
-| Determinant | Calculates the determinant of a square matrix. |
+------------------------------------------------------------------------
 
-## Sample Output
+## Author
 
-```
-========================================
-        MATRIX OPERATIONS TOOL
-========================================
-1. Matrix Addition
-2. Matrix Subtraction
-3. Matrix Multiplication
-4. Matrix Transpose
-5. Matrix Determinant
-6. Exit
-```
-
-## Learning Outcomes
-
-This project helps in understanding:
-- Matrix manipulation using NumPy
-- Function-based program design
-- Interactive console applications
-- Matrix dimension validation
-- Basic numerical computing with Python
-
-## Conclusion
-
-The Matrix Operations Tool provides a simple and efficient way to perform essential matrix calculations. It serves as an excellent beginner project for learning Python, NumPy, and mathematical computing concepts.
+Developed as an academic Django project demonstrating sentiment analysis
+using Natural Language Processing (NLP) with TextBlob.
